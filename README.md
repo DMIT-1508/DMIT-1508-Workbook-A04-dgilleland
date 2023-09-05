@@ -1,4 +1,4 @@
-# DMIT-1508 - **Student Workbook** (Sep 2022)
+# DMIT-1508 - **Student Workbook** (Sep 2023)
 
 > **STUDENT_NAME** - Place your name in this line.
 
