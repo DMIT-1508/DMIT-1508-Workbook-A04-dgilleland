@@ -42,6 +42,8 @@ Recommended tools for this course include:
     - [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio)
 - [**LucidChart**](https://www.lucidchart.com/pages/) or **Draw.io** ([VS Code Extension](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) vs. [desktop](https://about.draw.io/integrations/#integrations_offline) vs. [online](https://draw.io) versions)
 
+There is a [Wininstall package](https://winstall.app/packs/6UXIuqRuh) for this course.
+
 Other recommended resources include:
 
 - [Learn Markdown](https://commonmark.org/help/)
