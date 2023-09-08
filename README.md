@@ -4,7 +4,7 @@
 
 ## Schedule
  
-> The following schedule is subject to change.
+> The following schedule is subject to change. Consult the course outline for the mark distribution.
 
 ```mermaid
 gantt
