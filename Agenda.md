@@ -16,6 +16,7 @@ gantt
     %% active - for current tasks
     %% crit - for red outline/background
     Intro & Workbook          :active,  part0, 2023-09-01, 2023-09-08
+    Practice Assignment       :crit, active, about, 2023-09-06, 2023-09-11
     Database Design           :         part1, 2023-09-11, 2023-09-22
     DDL Commands              :         part2, 2023-09-25, 2023-10-02
     SQL Queries               :         part3, 2023-10-03, 2023-10-20
