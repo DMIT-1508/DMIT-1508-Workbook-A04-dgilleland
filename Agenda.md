@@ -8,7 +8,7 @@
 gantt
     dateFormat  YYYY-MM-DD
     title       DMIT-1508 | Scheduled Topics & Assessments
-    excludes    weekends
+    %% excludes    weekends
     %% (`excludes` accepts specific dates in YYYY-MM-DD format, days of the week ("sunday") or "weekends", but not the word "weekdays".)
 
     section Topics
