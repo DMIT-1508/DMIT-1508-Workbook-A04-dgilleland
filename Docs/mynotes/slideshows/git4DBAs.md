@@ -38,105 +38,115 @@ theme: default
 
 ### 1. Define DVCS
 
-- **DVCS** stands for Distributed Version Control System.
-- Allows multiple users to work on a project without interfering with each other.
-- Each user has a complete copy of the repository.
+* **DVCS** stands for Distributed Version Control System.
+* Allows multiple users to work on a project without interfering with each other.
+* Each user has a complete copy of the repository.
 
 ---
 
 ### 2. Benefits of Version Control
 
-- Track and revert changes.
-- Collaborate with multiple team members.
-- Maintain a history of project versions.
-- Essential for team-based projects and continuous integration.
+* Track and revert changes.
+* Collaborate with multiple team members.
+* Maintain a history of project versions.
+* Essential for team-based projects and continuous integration.
 
 ---
 
-### 3. Create a Repository
+### 3. Command Line Management
 
-- Navigate to your personal profile on GitHub.com.
-- Click on "New Repository".
-- Fill in repository details and initialize.
-
----
-
-### 4. Command Line Management
-
-- Navigate using terminal or command prompt.
-- Use commands like `git init`, `git add`, and `git commit`.
-- Essential for advanced git operations.
+* Navigate using terminal or command prompt.
+* Use commands like `git init`, `git add`, and `git commit`.
+* Essential for advanced git operations.
 
 ---
 
-### 5. Key Terms
+### 4. Key Terms
 
-- **Clone**: Copy a repository to your local machine.
-- **Commit**: Save changes with a message.
-- **Stage**: Prepare changes for a commit.
-- **Pull**: Fetch changes from a remote repository.
-- **Push**: Send changes to a remote repository.
+* **Clone**: Copy a repository to your local machine.
+* **Commit**: Save changes with a message.
+* **Stage**: Prepare changes for a commit.
+* **Pull**: Fetch changes from a remote repository.
+* **Push**: Send changes to a remote repository.
+
+---
+
+### 5. `ReadMe.md` File
+
+* Provides an overview and instructions for the project.
+* Typically the first file users see in a repository.
+* Can include project setup, usage, and contribution guidelines.
 
 ---
 
 ### 6. `.gitignore` File
 
-- Lists files and directories to be ignored by git.
-- Useful for excluding sensitive data or build artifacts.
-- Each line in the file specifies a pattern.
+* Lists files and directories to be ignored by git.
+* Useful for excluding sensitive data or build artifacts.
+* Each line in the file specifies a pattern.
 
 ---
 
 ### 7. `.gitattributes` File
 
-- Defines attributes for paths.
-- Can be used to specify line endings, diff settings, and more.
-- Helps ensure consistent settings across environments.
+* Defines attributes for paths.
+* Can be used to specify line endings, diff settings, and more.
+* Helps ensure consistent settings across environments.
 
 ---
 
 ### 8. Remote vs. Local Repository
 
-- **Remote**: Hosted on a server (e.g., GitHub, GitLab).
-- **Local**: Resides on your personal computer.
-- Changes are made locally and then pushed to the remote.
+* **Remote**: Hosted on a server (e.g., GitHub, GitLab).
+* **Local**: Resides on your personal computer.
+* Changes are made locally and then pushed to the remote.
 
 ---
 
-### 9. Synchronization
+### 9. Create a Repository
 
-- Use `git pull` to fetch and merge changes.
-- Use `git push` to send local changes to the remote.
-- Ensures both repositories are up-to-date.
+![bg right fit](./images/github-new-repo.png)
+
+* Navigate to your personal profile on GitHub.com.
+* Click on "New Repository".
+* Fill in repository details and initialize.
+  * Name it "Playground"
+  * Add a README file
+  * Do not add `.gitignore` (yet)
+* Clone to your local computer
+  * *Now* add a `.gitignore`
+  * Add a [`.gitattributes`](https://gist.github.com/dagilleland/b63c5fc2865941a863cc759682e9599d) file
 
 ---
 
-### 10. `ReadMe.md` File
+### 10. Synchronization
 
-- Provides an overview and instructions for the project.
-- Typically the first file users see in a repository.
-- Can include project setup, usage, and contribution guidelines.
+* Use `git pull` to fetch and merge changes.
+* Use `git push` to send local changes to the remote.
+* Ensures both repositories are up-to-date.
 
 ---
 
 ### 11. Define Markdown
 
-- Lightweight markup language.
-- Used for formatting text.
-- Commonly used for READMEs, documentation, and more.
+* Lightweight markup language.
+* Used for formatting text.
+* Commonly used for READMEs, documentation, and more.
+  * Can even be extended for things like slideshows (this document)
 
 ---
 
 ### 12. Benefits of Markdown
 
-- Simple syntax, easy to learn.
-- Platform-independent; can be viewed on any device.
-- Lightweight compared to Word; more flexible than HTML.
+* Allows you to focus on the content rather than the formatting (because it is purely text-based).
+* Version-control-friendly (as opposed to Word documents, which can easily cause merge conflicts).
+* Platform-independent; can be viewed on any device.
+* Simple syntax, easy to learn.
 
 ---
 
 ## Conclusion
 
-- Recap of the main points covered.
-- Encourage practice and application of the concepts learned.
+* Recap of the main points covered.
+* Encourage practice and application of the concepts learned.
 
