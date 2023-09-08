@@ -4,7 +4,7 @@
 
 ## Schedule
  
-> The following schedule is subject to change. Consult the course outline for the mark distribution.
+> The following schedule is subject to change. Consult the course outline for the mark distribution. See the [Agenda](./Agenda.md) for details on upcoming and completed topics.
 
 ```mermaid
 gantt
