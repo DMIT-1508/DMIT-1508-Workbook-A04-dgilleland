@@ -29,6 +29,23 @@
 
 ## Sep 13
 
-- [ ] Entity Relationship Diagrams
+- [x] Entity Relationship Diagrams
 
+## Sep 14
+
+- [ ] Normalization
+  - [ ] Theory/Notes
+    - List the reasons why we go through the process of "normalizing" metadata
+    - Identify the "normal forms" up to and including 3NF
+    - Describe the "normal forms" up to and including 3NF
+    - Explain what is meant by **0NF** and why your instructor requires this step in your normalization process
+    - Analyze source documents to distinguish between meta-data and data
+      - > Review the [ESP-1-Specs](/Design/ESP-1-Specs.pdf) as a sample
+ - [ ] [PowerPoint Presentation](/Design/ESP-1-Normalization.pptx)
+ - [ ] Practice
+    - Analyze a form to identify metadata (0NF) and create a list of the metadata
+    - Remove repeating groups, if any, by isolating them into their own distinct entity (1NF) (while maintaining relationships)
+    - Check for partial dependencies, if any (2NF)
+    - Check for transitive dependencies, if any (3NF)
+    - List key questions to ask yourself when checking whether you've correctly processed meta-data through 1NF to 3NF.
 
