@@ -31,7 +31,7 @@
 
 - [x] Entity Relationship Diagrams
 
-## Sep 14
+## Sep 15
 
 - [ ] Normalization
   - [ ] Theory/Notes
