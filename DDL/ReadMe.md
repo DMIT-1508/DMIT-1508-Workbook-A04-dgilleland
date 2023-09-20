@@ -1,5 +1,7 @@
 # Databases, Servers, and SSMS
 
+> If you haven't already, you should install the [**mssql**](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) extension for VS Code. Also, refer to the [SQL Server extension for Visual Studio Code](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code/sql-server-develop-use-vscode?view=sql-server-ver16) guide for information on how to use this extension.
+
 - SQL Server
   - Software that runs as a *service* on the computer.
   - Multiple instances of SQL Server can be installed on the same computer.
