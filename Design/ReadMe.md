@@ -6,7 +6,7 @@
 
 | Comments | Diagram |
 | :--- | :--- |
-| Items to identify in this ERD are the **entities**, **attributes**, **relationships**, **cardinality** and **optionality**. | ![Logical ERD](./Logical-ERD.png) |
+| Items to identify in this ERD are the **entities**, **attributes**, **relationships**, **cardinality** and **primary/foreign key** indicators. Not represented in this diagram is the **optionality** (`O`) indicator for attributes. | ![Logical ERD](./Logical-ERD.png) |
 
 ## Normalization
 
