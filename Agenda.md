@@ -42,10 +42,27 @@
     - Analyze source documents to distinguish between meta-data and data
       - > Review the [ESP-1-Specs](/Design/ESP-1-Specs.pdf) as a sample
  - [ ] [PowerPoint Presentation](/Design/ESP-1-Normalization.pptx)
+
+## Sep 19
+
+- [ ] Normalization & ERDs
  - [ ] Practice
     - Analyze a form to identify metadata (0NF) and create a list of the metadata
     - Remove repeating groups, if any, by isolating them into their own distinct entity (1NF) (while maintaining relationships)
     - Check for partial dependencies, if any (2NF)
     - Check for transitive dependencies, if any (3NF)
     - List key questions to ask yourself when checking whether you've correctly processed meta-data through 1NF to 3NF.
+    - Create ERDs
+
+## Sep 20
+
+- [ ] Normalization & ERDs
+  - [ ] Practice
+  - [ ] Intro to LucidChart for ERDs
+
+## Sep 22
+
+- [ ] Documenting Your Lab
+  - [ ] Writing normalization steps in Markdown
+  - [ ] Referencing ERD images in Markdown
 
