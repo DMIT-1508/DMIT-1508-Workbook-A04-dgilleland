@@ -62,6 +62,7 @@
 
 ## Sep 22
 
+- [ ] Creating VS Code Profiles
 - [ ] Documenting Your Lab
   - [ ] Writing normalization steps in Markdown
   - [ ] Referencing ERD images in Markdown
