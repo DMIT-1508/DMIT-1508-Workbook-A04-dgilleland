@@ -1,27 +1,33 @@
-# YOUR_NAME
+# Lab 1
 
-**Known Bugs:**
-
-- *Fill in this list when you are finished your solution. Enter `No known bugs` if you have completed all the lab requirements successfully*
-
-## Legend
-
-This legend is a guide to reading and interpreting the table listings under 0NF through 3NF.
-
-- **TableName:**
-  - Table names will be bolded and end with a colon. (e.g.: `**TableName:**`)
-- (Column, Names)
-  - Column names for a table will be enclosed in (rounded parenthesis) (e.g.: `<span class="md">All, Attributes</span>`).
-- <b class="pk">PrimaryKeyFields</b>
-  - Primary key fields will be bold and inside a box. (e.g.: `<b class="pk">PrimaryKeyFields</b>`)
-- <u class="fk">ForeignKeyFields</u>
-  - Foreign key fields will be a wavy underline in italic and green. (e.g.: `<u class="fk">ForeignKeyFields</u>`)
-- <b class="rg">Repeating Groups</b>
-  - Groups of repeating fields will be identified in 0NF stage, and will be enclosed in orange curly braces. (e.g.: `<b class="rg">Repeating, Group, Fields</b>`)
+> Dan Gilleland
 
 ----
 
-> ***Your solution here***
+## Customer Orders View
+
+### 0NF
+
+After performing Zero-Normal Form, a single entity was identified: Order
+
+**Order:** <span class="md"><b class="pk">OrderNumber</b>, CustomerNumber, FirstName, LastName, Address, City, Province, PostalCode, Phone, Date, <b class="rg">ItemNumber, Description, Quantity, CurrentPrice, SellingPrice, Amount</b>, Subtotal, GST, Total</span>
+
+### 1NF
+
+
+
+
+### Final Entities
+
+These are the final tables/entities after normalizaing the Customer Orders View.
+
+**Order:** <span class="md"><b class="pk">OrderNumber</b>, <u class="fk">CustomerNumber</u>, Date, Subtotal, GST, Total</span>
+
+**OrderDetail:** <span class="md"><b class="pk"><u class="fk">OrderNumber</u>, <u class="fk">ItemNumber</u></b>, Quantity, SellingPrice, Amount</span>
+
+### ERD
+
+![](./Images/CustomerOrderView.png)
 
 ----
 
@@ -110,3 +116,20 @@ This legend is a guide to reading and interpreting the table listings under 0NF 
     font-size: 1.1em;
 }
 </style>
+
+----
+
+## Legend
+
+This legend is a guide to reading and interpreting the table listings under 0NF through 3NF.
+
+- **TableName:**
+  - Table names will be bolded and end with a colon. (e.g.: `**TableName:**`)
+- (Column, Names)
+  - Column names for a table will be enclosed in (rounded parenthesis) (e.g.: `<span class="md">All, Attributes</span>`).
+- <b class="pk">PrimaryKeyFields</b>
+  - Primary key fields will be bold and inside a box. (e.g.: `<b class="pk">PrimaryKeyFields</b>`)
+- <u class="fk">ForeignKeyFields</u>
+  - Foreign key fields will be a wavy underline in italic and green. (e.g.: `<u class="fk">ForeignKeyFields</u>`)
+- <b class="rg">Repeating Groups</b>
+  - Groups of repeating fields will be identified in 0NF stage, and will be enclosed in orange curly braces. (e.g.: `<b class="rg">Repeating, Group, Fields</b>`)

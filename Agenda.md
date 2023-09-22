@@ -63,6 +63,10 @@
 ## Sep 22
 
 - [ ] Creating VS Code Profiles
+  - Press the <kbd>F1</kbd> key to open the Command Palette
+  - Type `Create Profile` and press <kbd>Enter</kbd>
+  - You might want to choose a theme (again, press <kbd>F1</kbd> to get started)
+  - Again, using the <kbd>F1</kbd>, enter "Show Recommended Extensions" and then install the Workspace Recommendations.
 - [ ] Documenting Your Lab
   - [ ] Writing normalization steps in Markdown
   - [ ] Referencing ERD images in Markdown
