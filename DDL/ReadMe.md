@@ -54,7 +54,7 @@ CHECK (Mark BETWEEN 0 AND 100)
 
 ![ERD](./SchoolTranscript.png)
 
-The following constraints/identities must be applied to the [**School Transcript**](./SchoolTranscript.sql) database.
+The following constraints/identities must be applied to the [**School Transcript**](./SchoolTranscript.sql) database. Refer to the page on [**Check Constraints**](CHECK-Constraints.md) for the related grammar and operators.
 
 - [ ] **`Student`** table
   - [ ] `StudentID` is an Identity with a seed of 20250001 and an increment of 3
