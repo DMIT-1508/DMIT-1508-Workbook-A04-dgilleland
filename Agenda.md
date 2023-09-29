@@ -84,6 +84,7 @@
 ## Sep 27
 
 - [ ] DDL
+  - Connecting to the Database in VS Code
   - Create/Drop Databases
   - Create/Drop simple Tables
     - Column names/types + null/not null
