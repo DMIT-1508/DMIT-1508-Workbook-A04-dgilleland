@@ -48,7 +48,28 @@ CHECK (Mark BETWEEN 0 AND 100)
 
 ![Spec 1 ERD](./ESP-PhysicalERD-Spec-1.png)
 
+----
+
 ## School Transcript
 
 ![ERD](./SchoolTranscript.png)
 
+The following constraints/identities must be applied to the [**School Transcript**](./SchoolTranscript.sql) database.
+
+- [ ] **`Student`** table
+  - [ ] `StudentID` is an Identity with a seed of 20250001 and an increment of 3
+  - [ ] `GivenName` and `Surname` have a minimum length of 2
+  - [ ] `DateOfBirth` must be in the past (less than today's date)
+  - [ ] `Enrolled` is "true" by default
+- [ ] **`Courses`** table
+  - [ ] `Number` must follow the pattern of `[a-z][a-z][a-z][a-z][- ][1-9][0-9][0-9][0-9]%`
+  - [ ] `Name` must have a minimum of 5 characters
+  - [ ] `Credits` can only be 3.0, 4.5, or 6.0
+  - [ ] `Hours` can only be 60, 75, 90, or 120
+  - [ ] `Active` is "true" by default
+  - [ ] `Cost` cannot be negative
+- [ ] **`StudentCourses`** table
+  - [ ] `Year` must be between 2000 and 2299
+  - [ ] `Term` must be either "SEP", "JAN" or "MAY"
+  - [ ] `FinalMark` must be between 0 and 100
+  - [ ] `Status` must be either 'W', 'E', or 'A' (Withdrawal, Enrolled, or Audit) and must default to 'E'
