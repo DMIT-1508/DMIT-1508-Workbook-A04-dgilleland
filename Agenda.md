@@ -75,3 +75,21 @@
   - [ ] Writing normalization steps in Markdown
   - [ ] Referencing ERD images in Markdown
 
+## Sep 26
+
+- [ ] Intro to SQL
+  - Note how to read a physical ERD for data types and optional (`NULL`) attributes
+- [ ] Work Period
+
+## Sep 27
+
+- [ ] DDL
+  - Create/Drop Databases
+  - Create/Drop simple Tables
+    - Column names/types + null/not null
+
+## Sep 29
+
+- [ ] DDL
+  - Constraints: PK/FK, Check, Default
+
