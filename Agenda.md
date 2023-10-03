@@ -94,7 +94,7 @@
 - [ ] DDL
   - Constraints: PK/FK, Check, Default
 
-## Oct 2
+## Oct 3
 
 - [ ] Alter Table
 - [ ] Create Index
