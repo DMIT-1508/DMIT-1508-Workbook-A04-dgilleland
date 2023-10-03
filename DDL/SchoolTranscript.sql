@@ -105,3 +105,13 @@ CREATE TABLE StudentCourses
     CONSTRAINT PK_StudentCourses_StudentID_CourseNumber
         PRIMARY KEY (StudentID, CourseNumber)
 )
+
+
+
+
+-- Add a column to the Students table for the student's Email. Make it up to 80 characters long.
+-- As a separate ALTER TABLE statements, add a CHECK constraint to make sure the email is "valid"
+-- by expecting it to have the '@' symbol somewhere in the email.
+-- Add a column to the StudentCourses table called 'Paid'; make it a bit data type.
+-- In a separate ALTER TABLE statement, add a default for the 'Paid' column to be '0'.
+-- Lastly, add non-clustered indexes for all the foreign keys in the database.
