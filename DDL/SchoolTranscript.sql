@@ -108,6 +108,7 @@ CREATE TABLE StudentCourses
 
 
 
+-- Practice ALTER TABLE and CREATE INDEX statements
 
 -- Add a column to the Students table for the student's Email. Make it up to 80 characters long.
 -- As a separate ALTER TABLE statements, add a CHECK constraint to make sure the email is "valid"

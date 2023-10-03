@@ -96,6 +96,7 @@
 
 ## Oct 3
 
+- [ ] Lab 2A - Intro & Setup
 - [ ] Alter Table
 - [ ] Create Index
 - ***Note:** For those who are using a Macintosh computer, you will need to connect to the database server using `localhost` as the server name and `SQL` for the authentication type (using the `sa` username and the password you set up when you installed MS SQL Server on Docker).*

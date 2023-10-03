@@ -92,7 +92,8 @@ CREATE TABLE Customers
     PhoneNumber     char(13)
         CONSTRAINT CK_Customers_PhoneNumber
             CHECK (PhoneNumber LIKE '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')
-                                            NULL  -- NULL means the data is optional
+                                            NULL,  -- NULL means the data is optional
+    FullName        AS FirstName + ' ' + LastName
 )
 
 CREATE TABLE Orders
