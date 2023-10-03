@@ -1,6 +1,6 @@
 # Agenda
 
-> These are my notes on what I plan to teach in each upcoming class. For the timeline of where we are today, see [the current schedule](./README.md#schedule).
+> These are my notes on what I plan to teach in each [upcoming class](#oct-4). For the timeline of where we are today, see [the current schedule](./README.md#schedule).
 >
 > ## *... Warn those who are idle ..., encourage the disheartened, help the weak, be patient with everyone.*
 >
@@ -101,4 +101,10 @@
 - [ ] Create Index
 - ***Note:** For those who are using a Macintosh computer, you will need to connect to the database server using `localhost` as the server name and `SQL` for the authentication type (using the `sa` username and the password you set up when you installed MS SQL Server on Docker).*
   - See [this article](https://dev.to/ijason/ms-sql-server-on-macos-with-docker-and-vs-code-2fpe) for details.
+
+
+## Oct 4
+
+- [ ] Answer to *SchoolTranscript.sql* `ALTER TABLE` and `CREATE INDEX` problems
+- [ ] Intro to SQL Queries
 
