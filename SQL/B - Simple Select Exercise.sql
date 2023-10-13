@@ -49,6 +49,14 @@ SELECT  COUNT(Mark) AS 'Student Count for DMIT152'
 FROM    Registration
 WHERE   CourseId = 'DMIT152'
 
+-- Let's compare the count of the students with marks against the count
+-- of student Ids
+SELECT  COUNT(Mark) AS 'Student Count for DMIT152',
+        COUNT(StudentID) AS 'Enrolled Students'
+FROM    Registration
+WHERE   CourseId = 'DMIT152'
+-- SELECT * FROM Registration WHERE CourseId = 'DMIT152' -- See the "raw" data
+
 --4.b   Select how many students are or have been in DMIT152
 --      SELECT * FROM Registration WHERE CourseId = 'DMIT152'
 SELECT  COUNT(StudentID)

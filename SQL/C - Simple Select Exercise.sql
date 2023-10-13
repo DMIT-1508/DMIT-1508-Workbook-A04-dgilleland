@@ -34,12 +34,18 @@ FROM    Payment
 GROUP BY PaymentTypeID
 ORDER BY COUNT(PaymentTypeID)
 -- HELP! Is the answer above correct?? How can we fix it?
+-- Order it using the DESC for descending order (highest to lowest)
 /* A note on ORDER BY
    - The ORDER BY clause will, by default, do the sorting in ascending order.
      You can also sort by more than one column (more on that later).
      You can be explicit in your desired sort order by adding ASC for ascending
      or DESC for descending after each column you identify in the sort order.
  */
+ SELECT  PaymentTypeID,                              -- Non-aggregate column (btw, it's a FK)
+        COUNT(StudentID) AS 'Count of Pay Type' -- Aggregate column
+FROM    Payment
+GROUP BY PaymentTypeID
+ORDER BY COUNT(StudentID) DESC
 
 -- 3. Select the average Mark for each studentID. Display the StudentId and their average mark
 -- TODO: Student Answer Here....
