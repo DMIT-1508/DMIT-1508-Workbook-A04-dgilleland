@@ -34,7 +34,7 @@ gantt
     Lab 4, due Dec 08  :     2023-11-30, 2023-12-08
 
     section Quizzes
-    Quiz 1, Oct 16 :milestone, 2023-10-16, 0d
+    Quiz 1, Oct 17 :milestone, 2023-10-17, 0d
     Quiz 2, Nov 06 :milestone, 2023-11-06, 0d
     Quiz 3, Dec 04 :milestone, 2023-12-04, 0d
     Quiz 4, Dec 13 :milestone, 2023-12-13, 0d
