@@ -3,13 +3,13 @@
    **************************************** */
 SELECT DB_NAME()
 GO
-IF NOT EXISTS (SELECT name FROM master.sys.databases WHERE name = N'A0X-School')
+IF NOT EXISTS (SELECT name FROM master.sys.databases WHERE name = N'A04-2023-School')
 BEGIN
-    CREATE DATABASE [A0X-School]
+    CREATE DATABASE [A04-2023-School]
 END
 GO
 
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 SELECT DB_NAME()
 GO
@@ -153,7 +153,7 @@ go
 
 /* School158 Data Inserts */
 
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 
 delete from Payment

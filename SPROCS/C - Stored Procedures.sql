@@ -1,7 +1,7 @@
 -- Stored Procedures (Sprocs)
 -- File: C - Stored Procedures.sql
 
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 
 -- Take the following queries and turn them into stored procedures.

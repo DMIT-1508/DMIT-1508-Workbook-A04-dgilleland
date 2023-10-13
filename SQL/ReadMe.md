@@ -1,6 +1,6 @@
 # SQL Queries and Views
 
-The samples and practice questions in this folder walk through the use of SQL Queries and Views and are based on the database A0X-School. You can create the database with data by running the [install script](./A0X-School.sql). The complete ERD for this database is found at the [end of this document](#erd-for-A0X-School).
+The samples and practice questions in this folder walk through the use of SQL Queries and Views and are based on the database A04-2023-School. You can create the database with data by running the [install script](./A04-2023-School.sql). The complete ERD for this database is found at the [end of this document](#erd-for-A04-2023-School).
 
 > A good reference for the grammar of [SQL Queries](https://dmarshnait.github.io/dmit1508/queries) and [Views](https://dmarshnait.github.io/dmit1508/views) can be found on [Dana Marsh's site](https://dmarshnait.github.io/dmit1508/).
 
@@ -111,6 +111,6 @@ This document introduces the using the `GROUP BY` clause with aggregate function
 
 ----
 
-## ERD for A0X-School
+## ERD for A04-2023-School
 
 ![ERD](./IQSchool-ERD.png)

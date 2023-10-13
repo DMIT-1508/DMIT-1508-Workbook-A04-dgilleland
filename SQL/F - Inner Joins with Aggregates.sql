@@ -1,5 +1,5 @@
 --Inner Joins With Aggregates Exercises
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 
 --1. How many staff are there in each position? Select the number and Position Description

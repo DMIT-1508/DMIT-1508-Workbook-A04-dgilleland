@@ -8,7 +8,7 @@ When there is something wrong with the data that is supplied in the parameters, 
 The implication of this is that since our SQL code in our sproc will continue to run, we need to be purposeful about using the ELSE side of our IF statements.
 */
 
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 
 /* ********* SPROC Template ************

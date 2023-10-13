@@ -2,7 +2,7 @@
 -- This sample set illustrates the GROUP BY syntax and the use of Aggregate functions
 -- with GROUP BY.
 -- It also demonstrates the HAVING clause to filter on aggregate values.
-USE [A0X-School]
+USE [A04-2023-School]
 GO
 SELECT DB_NAME()
 GO
