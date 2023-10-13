@@ -20,12 +20,12 @@ ORDER BY clause - Sort our final results
 SELECT  'Dan', 'Gilleland'
 
 -- Simple Select with expressions
-SELECT  'Dan' + ' ' + 'Gilleland', 18 * 52, '5' + '10'
+SELECT  'Dan' + ' ' + 'Gilleland', 23 * 52, '5' + '10'
 --        textual information      numbers    textual
 
 -- Specify a column name with some hard-code/calculated values
 SELECT  'Dan' + ' ' + 'Gilleland' AS 'Instructor',
-        22 * 52 AS 'Weeks at the job'
+        23 * 52 AS 'Weeks at the job'
 
 -- Let's use the SELECT statement with database tables
 
@@ -64,7 +64,7 @@ FROM    Student
 --      and sort the results by the last name
 SELECT    FirstName, LastName
 FROM      Student
-ORDER BY  LastName -- default is to sort in ASCENDING order
+ORDER BY  LastName ASC -- default is to sort in ASCENDING order
 -- 2.d
 SELECT    FirstName, LastName
 FROM      Student
@@ -74,6 +74,11 @@ ORDER BY  LastName DESC -- Descending order
 SELECT    FirstName, LastName
 FROM      Student
 ORDER BY  LastName, FirstName
+
+-- You can specify the sort order of each column in the ORDER BY clause
+SELECT    FirstName, LastName
+FROM      Student
+ORDER BY  LastName DESC, FirstName
 
 --3. Select the CourseId and CourseName of all the courses. Use the column aliases of Course ID and Course Name
 SELECT  CourseId AS 'Course ID', CourseName AS 'Course Name'
@@ -99,7 +104,7 @@ WHERE  CourseID LIKE 'DMIT1%'
 
 --5. Select the Staff names who have job positionID of 3
 SELECT FirstName, LastName
-       --,PositionID -- Press [ctrl] + k, then [ctrl] + u to un-comment
+      --  ,PositionID -- Press [ctrl] + k, then [ctrl] + u to un-comment
 FROM   Staff
 WHERE  PositionID = 3
 
@@ -113,6 +118,10 @@ FROM    Course AS C -- I can have an alias to the table name
 WHERE   C.CourseHours < 96
 
 -- Type with me the following...
+SELECT  S.BalanceOwing, S.StreetAddress, S.City
+FROM    Student AS S
+WHERE   S.BalanceOwing > 0
+
 SELECT  ST.LastName, ST.DateHired, ST.DateReleased
 FROM    Staff AS ST -- The use of the AS keyword in producing table/column aliases is optional
                     -- but it can be a good idea for readability.
