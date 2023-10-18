@@ -25,9 +25,14 @@ ORDER BY 'Average Mark' DESC -- You can use the Column Name for sorting
 
 --3. How many payments where made for each payment type. Display the PaymentTypeDescription and the count.
  -- TODO: Student Answer Here... 
-
+SELECT  PaymentTypeDescription,
+        COUNT(PaymentID)
+FROM    PaymentType AS PT
+    INNER JOIN Payment AS P ON PT.PaymentTypeID = P.PaymentTypeID
 
 --4. Select the average Mark for each student. Display the Student Name and their average mark. Use table aliases in your FROM & JOIN clause.
+-- An aggregate function is one that takes a bunch of values and returns a single value.
+-- Examples of this are SUM, AVG, MIN, MAX, COUNT
 SELECT  S.FirstName  + ' ' + S.LastName AS 'Student Name',
         AVG(R.Mark)                     AS 'Average'
 FROM    Registration AS R
