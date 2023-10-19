@@ -29,13 +29,13 @@ gantt
     section Labs
     Lab 1, due Sep 29  :     2023-09-18, 2023-09-29
     Lab 2A, due Oct 13 :     2023-10-02, 2023-10-13
-    Lab 2B, due Oct 27 :     2023-10-16, 2023-10-27
+    Lab 2B, due Oct 31 :     2023-10-16, 2023-10-31
     Lab 3, due Nov 24  :     2023-10-30, 2023-11-24
     Lab 4, due Dec 08  :     2023-11-30, 2023-12-08
 
     section Quizzes
     Quiz 1, Oct 17 :milestone, 2023-10-17, 0d
-    Quiz 2, Nov 06 :milestone, 2023-11-06, 0d
+    Quiz 2, Nov 07 :milestone, 2023-11-07, 0d
     Quiz 3, Dec 04 :milestone, 2023-12-04, 0d
     Quiz 4, Dec 13 :milestone, 2023-12-13, 0d
 ```
