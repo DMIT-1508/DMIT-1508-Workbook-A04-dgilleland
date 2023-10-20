@@ -7,7 +7,7 @@ GO
 SELECT DB_NAME()
 GO
 
---1.	Select the average Mark from all the Marks in the registration table
+--1.    Select the average Mark from all the Marks in the registration table
 -- SELECT * FROM Registration - view raw data
 SELECT  AVG(Mark) AS 'Average Mark'
 FROM    Registration
@@ -19,12 +19,12 @@ SELECT  AVG(Mark) AS 'Average Mark',
 FROM    Registration
 
 
---2.	Select the average Mark of all the students who are taking DMIT104
+--2.    Select the average Mark of all the students who are taking DMIT104
 SELECT  AVG(Mark) AS 'Average Mark' -- Some Aggregate functions expect to work with numbers
 FROM    Registration
 WHERE   CourseId = 'DMIT104'
 
---3.	Select how many students are there in the Student Table
+--3.    Select how many students are there in the Student Table
 SELECT  COUNT(FirstName) AS 'Student Count'
 FROM    Student
 
@@ -44,7 +44,7 @@ FROM    Staff
 SELECT  COUNT(DateReleased) AS 'Retired Staff'
 FROM    Staff
 
---4.	Select how many students have taken (have a grade for) DMIT152
+--4.    Select how many students have taken (have a grade for) DMIT152
 SELECT  COUNT(Mark) AS 'Student Count for DMIT152'
 FROM    Registration
 WHERE   CourseId = 'DMIT152'
@@ -67,7 +67,7 @@ WHERE   CourseId = 'DMIT152'
     FROM    Course
     WHERE   CourseId = 'DMIT152'
 
---5.	Select the average payment amount for payment type 5
+--5.    Select the average payment amount for payment type 5
 -- TODO: Student Answer Here - Hint: It's in the Payment table....
 
 
@@ -76,7 +76,7 @@ WHERE   CourseId = 'DMIT152'
 -- TODO: Student Answer Here
 
 
---7.	 Select the lowest payment amount
+--7.     Select the lowest payment amount
 -- TODO: Student Answer Here
 
 

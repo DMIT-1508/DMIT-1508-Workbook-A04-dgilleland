@@ -62,12 +62,12 @@ Millisecond     ms               0             999
 
 -- *******************************
 -- STRING FUNCTIONS
-	-- LEN
-	SELECT LEN('Hello World') AS 'Number of characters'
-	-- LEFT
-	SELECT LEFT('Hello World', 5) AS 'First five characters'
-	-- RIGHT
-	SELECT RIGHT('Hello World', 5) AS 'Last five characters'
+    -- LEN
+    SELECT LEN('Hello World') AS 'Number of characters'
+    -- LEFT
+    SELECT LEFT('Hello World', 5) AS 'First five characters'
+    -- RIGHT
+    SELECT RIGHT('Hello World', 5) AS 'Last five characters'
 
     SELECT LEFT(FirstName,1) + '.' + LEFT(LastName,1) + '.' AS 'Staff Initials'
     FROM   Staff
@@ -86,38 +86,38 @@ Millisecond     ms               0             999
     -- (Club whose id is a palindrome)
     -- Select the insert statement below to add a row into the Club table
     -- INSERT INTO Club(ClubId, ClubName) VALUES ('ABCBA', 'Active Bat Catching Brotherhood Assoc.')
-	SELECT	ClubId, ClubName
-	FROM	Club
-	WHERE   ClubId = REVERSE(ClubId)
-	-- Modifying
-		-- LTRIM, RTRIM -- To remove whitespace from the left or the right
-		-- UPPER, LOWER -- Return upper and lower characters
+    SELECT    ClubId, ClubName
+    FROM    Club
+    WHERE   ClubId = REVERSE(ClubId)
+    -- Modifying
+        -- LTRIM, RTRIM -- To remove whitespace from the left or the right
+        -- UPPER, LOWER -- Return upper and lower characters
 
 -- Date Functions
-	-- GETDATE()
-	SELECT GETDATE() AS 'Database Server- Current Date/Time'
-	-- DATENAME - See https://msdn.microsoft.com/en-CA/library/ms174395.aspx for DateParts
-	SELECT DATENAME(MONTH, GETDATE()) AS 'Database Server- Current Month'
-	-- DATEPART - Similar to above
-	SELECT DATEPART(WEEKDAY, GETDATE()) AS 'Day of the week',
-	       DATENAME(WEEKDAY, GETDATE()) AS 'Day of the week'
-	-- DAY
-	-- MONTH -- Birthdays this month - Student.Birthdate
+    -- GETDATE()
+    SELECT GETDATE() AS 'Database Server- Current Date/Time'
+    -- DATENAME - See https://msdn.microsoft.com/en-CA/library/ms174395.aspx for DateParts
+    SELECT DATENAME(MONTH, GETDATE()) AS 'Database Server- Current Month'
+    -- DATEPART - Similar to above
+    SELECT DATEPART(WEEKDAY, GETDATE()) AS 'Day of the week',
+           DATENAME(WEEKDAY, GETDATE()) AS 'Day of the week'
+    -- DAY
+    -- MONTH -- Birthdays this month - Student.Birthdate
     SELECT FirstName, MONTH(Birthdate) AS 'Birth Month' FROM Student
     WHERE  MONTH(Birthdate) = DATEPART(MONTH, GETDATE())
-	-- YEAR
-	-- DATEDIFF - Staff.DateHired - DateReleased
-	SELECT FirstName + ' ' + LastName AS 'Staff Name',
-	       DATEDIFF(DAY, DateHired, DateReleased) AS 'Days Employed'
+    -- YEAR
+    -- DATEDIFF - Staff.DateHired - DateReleased
+    SELECT FirstName + ' ' + LastName AS 'Staff Name',
+           DATEDIFF(DAY, DateHired, DateReleased) AS 'Days Employed'
            -->> DateReleased - DateHired, expressed as number of Days
-	FROM   Staff
-	WHERE  DateReleased IS NOT NULL
+    FROM   Staff
+    WHERE  DateReleased IS NOT NULL
 
-	-- DATEADD
-	SELECT DATEADD(DAY, 7, GETDATE()) AS 'Date a week from now'
-	-- ISDATE
-	SELECT ISDATE(GETDATE()) AS 'GETDATE() Info',
-	       ISDATE('Hi Dan') AS 'Not a Date'
+    -- DATEADD
+    SELECT DATEADD(DAY, 7, GETDATE()) AS 'Date a week from now'
+    -- ISDATE
+    SELECT ISDATE(GETDATE()) AS 'GETDATE() Info',
+           ISDATE('Hi Dan') AS 'Not a Date'
 
 -- *******************************
 

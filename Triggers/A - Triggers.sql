@@ -205,7 +205,7 @@ CREATE TRIGGER Registration_InsertUpdate_EnforceForeignKeyValues
 ON Registration
 FOR INSERT, UPDATE -- Choose only the DML statement(s) that apply
 AS
-	-- Body of Trigger
+    -- Body of Trigger
     IF @@ROWCOUNT > 0
     BEGIN
         -- UPDATE(columnName) is a function call that checks to see if information between the 
@@ -268,19 +268,19 @@ CREATE TRIGGER Student_Update_AuditBalanceOwing
 ON Student
 FOR UPDATE -- Inserting does not CHANGE, it CREATES data; Deleting does not CHANGE, it removes data
 AS
-	-- Body of Trigger
+    -- Body of Trigger
     IF @@ROWCOUNT > 0 AND UPDATE(BalanceOwing)
-	BEGIN
-	    INSERT INTO BalanceOwingLog (StudentID, ChangedateTime, OldBalance, NewBalance)
-	    SELECT I.StudentID, GETDATE(), d.BalanceOwing, i.BalanceOwing
+    BEGIN
+        INSERT INTO BalanceOwingLog (StudentID, ChangedateTime, OldBalance, NewBalance)
+        SELECT I.StudentID, GETDATE(), d.BalanceOwing, i.BalanceOwing
         FROM deleted AS d 
             INNER JOIN inserted AS i on d.StudentID = i.StudentID
-	    IF @@ERROR <> 0 
-	    BEGIN
-		    RAISERROR('Insert into BalanceOwingLog Failed',16,1)
+        IF @@ERROR <> 0 
+        BEGIN
+            RAISERROR('Insert into BalanceOwingLog Failed',16,1)
             ROLLBACK TRANSACTION
-		END	
-	END
+        END    
+    END
 RETURN
 GO
 

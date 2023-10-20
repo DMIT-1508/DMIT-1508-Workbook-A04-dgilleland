@@ -16,7 +16,7 @@ CREATE TRIGGER Club_Insert_Lockdown
 ON Club
 FOR Insert -- Choose only the DML statement(s) that apply
 AS
-	-- Body of Trigger
+    -- Body of Trigger
     IF @@ROWCOUNT > 0
     BEGIN
         RAISERROR('Temporary lockdown on creating new clubs.', 16, 1)

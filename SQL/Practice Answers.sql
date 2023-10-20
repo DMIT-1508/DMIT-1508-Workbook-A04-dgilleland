@@ -39,7 +39,7 @@ WHERE   Amount < 500
 /* ===============================
    |  B - Simple Select          |
    ------------------------------- */
---5.	Select the average payment amount for payment type 5
+--5.    Select the average payment amount for payment type 5
 -- TODO: Student Answer Here - Hint: It's in the Payment table....
 SELECT  AVG(Amount) AS 'Average Payment'
 FROM    Payment AS P
@@ -53,7 +53,7 @@ SELECT  MAX(Amount) AS 'Highest Payment'
 FROM    Payment
 
 
---7.	 Select the lowest payment amount
+--7.     Select the lowest payment amount
 -- TODO: Student Answer Here
 SELECT  MIN(Amount) AS 'Lowest Payment'
 FROM    Payment
@@ -148,7 +148,7 @@ GROUP BY Gender
 /* ===============================
    |  D - Simple Joins           |
    ------------------------------- */
---5.	Select the Student full name, course names and marks for studentID 199899200.
+--5.    Select the Student full name, course names and marks for studentID 199899200.
 -- TODO: Student Answer Here...
 SELECT  FirstName + ' ' + LastName AS 'Student',
         CourseName,
@@ -159,14 +159,14 @@ FROM    Student AS S
 WHERE   S.StudentID = '199899200'
 
 
---6.	Select the CourseID, CourseNames, and the Semesters they have been taught in
+--6.    Select the CourseID, CourseNames, and the Semesters they have been taught in
 -- TODO: Student Answer Here...
 SELECT  DISTINCT C.CourseId, C.CourseName, R.Semester
 FROM    Course AS C
     INNER JOIN Registration AS R ON C.CourseId = R.CourseId
 
 
---7.	What Staff Full Names have taught Networking 1?
+--7.    What Staff Full Names have taught Networking 1?
 -- TODO: Student Answer Here...
 SELECT  FirstName + ' ' + LastName AS 'Staff Name'
 FROM    Staff AS S
@@ -174,7 +174,7 @@ FROM    Staff AS S
     INNER JOIN Course AS C ON R.CourseId = C.CourseId
 WHERE   CourseName = 'Networking 1'
 
---8.	What is the course list for student ID 199912010 in semester 2001S. Select the Students Full Name and the CourseNames
+--8.    What is the course list for student ID 199912010 in semester 2001S. Select the Students Full Name and the CourseNames
 -- TODO: Student Answer Here...
 SELECT  FirstName + ' ' + LastName AS 'Student',
         CourseName
@@ -216,11 +216,12 @@ ORDER BY R.CourseId
    ------------------------------- */
   -- Abbreviate the month name to 3 characters.
   -- TODO: Student Answer Here
-	SELECT LEFT(DATENAME(MONTH, GETDATE()), 3) AS 'Database Server- Current Month'
+    SELECT LEFT(DATENAME(MONTH, GETDATE()), 3) AS 'Database Server- Current Month'
 
    
 -- 6. select last three characters of all the course ids
 -- TODO: Student Answer Here...
+
 
 
 -- 7. Select the characters in the position description from characters 8 to 12

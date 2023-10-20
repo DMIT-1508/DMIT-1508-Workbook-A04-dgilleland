@@ -104,7 +104,7 @@ AS
         BEGIN TRANSACTION -- Don't forget this....
         -- Step 1) Deal with those who "could" get 100%+ by just giving them 100%
         -- You can use PRINT() statements temporarily as a way to see what stage/step is run when you test the SPROC
-	-- BUT you must REMEMBER TO REMOVE THE PRINT STATEMENTS in your final version of the stored procedure
+    -- BUT you must REMEMBER TO REMOVE THE PRINT STATEMENTS in your final version of the stored procedure
         PRINT('Step 1 - Update Registration...') -- Will output in the messages window
         UPDATE Registration
            SET Mark = 100            -- the max mark possible
