@@ -10,9 +10,10 @@ GO
 -- Rather, the View "extracts" data from the tables by using a SELECT statement under the hood.
 
 --1.  Create a view of staff full names called StaffList.
-IF OBJECT_ID('StaffList', 'V') IS NOT NULL
-    DROP VIEW StaffList
+DROP VIEW IF EXISTS StaffList
 GO
+-- Creating a view should appear as its own "batch" statement
+-- (i.e.: remember to use the GO statement after creating the view)
 CREATE VIEW StaffList
 AS
     SELECT  FirstName + ' ' + LastName AS 'StaffFullName'
@@ -26,8 +27,7 @@ FROM    StaffList
 -- SP_HELP StaffList        -- Gets schema info on the View
 GO
 --2.  Create a view of staff ID's, full names, positionID's and datehired called StaffConfidential.
-IF OBJECT_ID('StaffConfidential', 'V') IS NOT NULL
-    DROP VIEW StaffConfidential
+DROP VIEW IF EXISTS StaffConfidential
 GO
 CREATE VIEW StaffConfidential
 AS
@@ -42,6 +42,7 @@ SELECT  FullName, DateHired
 FROM    StaffConfidential
 GO
 --2a. Alter the StaffConfidential view so that it includes the position name.
+--    The ALTER VIEW statement presumes that the view already exists
 ALTER VIEW StaffConfidential
 AS
     SELECT  StaffID,
@@ -52,15 +53,16 @@ AS
     FROM    Staff AS S
         INNER JOIN Position AS P ON S.PositionID = P.PositionID
 GO
+
+-- Use the new view to get the names and positions of the staff members
 SELECT  FullName, PositionName, PositionID
 FROM    StaffConfidential
 GO
 
 --3.  Create a view called StaffExperience that returns the name of the staff members that have taught courses and the names of the courses they have taught. Sort the results by staff last name then first name, then course name.
-IF OBJECT_ID('StaffExperienceRaw', 'V') IS NOT NULL
-    DROP VIEW StaffExperienceRaw
-GO
-CREATE VIEW StaffExperienceRaw
+--    Note: The CREATE OR ALTER VIEW is an alternative to using the
+--          DROP VIEW IF EXISTS statement followed by a CREATE VIEW statement
+CREATE OR ALTER VIEW StaffExperienceRaw
 AS
     -- 
     SELECT  FirstName + ' ' + LastName as 'StaffName',
@@ -74,16 +76,18 @@ AS
         -- "The OFFSET is the number of rows to skip before including them in the result."
         OFFSET 0 ROWS
 GO
-IF OBJECT_ID('StaffExperience', 'V') IS NOT NULL
-    DROP VIEW StaffExperience
+
+-- Let's use the previous view as the "source" for this view's query
+DROP VIEW IF EXISTS StaffExperience
 GO
 CREATE VIEW StaffExperience
 AS
     SELECT  StaffName, CourseName
-    FROM    StaffExperienceRaw
-    GROUP BY StaffName, CourseName
+    FROM    StaffExperienceRaw -- <== This is another view
+    GROUP BY StaffName, CourseName -- Using this to remove duplicates
 GO
 
+-- Now, let's use the StaffExperience view in a query
 SELECT StaffName, CourseName FROM StaffExperience
 
 --4.  Create a view called StudentGrades that retrieves the student ID's, full names, courseId's, course names, and marks for each student.

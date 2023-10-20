@@ -6,7 +6,7 @@ GO
 SELECT  FirstName, LastName
 FROM    Staff
 
-UNION
+UNION -- Think of this as "merging" the results
 
 SELECT  FirstName, LastName
 FROM    Student
@@ -51,8 +51,7 @@ ORDER BY 'ID' DESC
 GO
 
 -- Create a view called RollCall that has the full name of each staff and student as well as identifying their role in the school.
-IF OBJECT_ID('RollCall', 'V') IS NOT NULL
-    DROP VIEW RollCall
+DROP VIEW IF EXISTS RollCall
 GO
 CREATE VIEW RollCall
 AS
@@ -68,7 +67,9 @@ AS
     FROM    Staff AS S
         INNER JOIN Position AS P ON S.PositionID = P.PositionID
 GO
-
+-- Let's use that view in a query
+SELECT  FullName
+FROM    RollCall
 
 --2.  Create a list of course IDs and the number of students in the course and
 --    UNION that with a list of the course IDs and the MaxStudents of the course.

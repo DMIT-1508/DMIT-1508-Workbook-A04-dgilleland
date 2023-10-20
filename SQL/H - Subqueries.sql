@@ -14,6 +14,7 @@ FROM   Payment
 WHERE  PaymentTypeID = -- Using the = means that the RH side must be a single value
      -- Assuming that every PaymentTypeDescription will be UNIQUE,
      -- the following subquery will return a single column and a single row
+     -- (quick look at the PaymentType data: SELECT * FROM PaymentType)
     (SELECT PaymentTypeID
      FROM   PaymentType
      WHERE  PaymentTypeDescription = 'cash')
@@ -36,7 +37,9 @@ SELECT * FROM Activity
 
 
 --3. Select All the staff full names for staff that have taught a course.
+--   Exploration: SELECT StaffID FROM Registration
 SELECT FirstName + ' ' + LastName AS 'Staff'
+       --, StaffID
 FROM   Staff
 WHERE  StaffID IN -- I used IN because the subquery returns many rows
     (SELECT DISTINCT StaffID FROM Registration)
@@ -84,10 +87,12 @@ HAVING COUNT(PaymentTypeID)  >= ALL (SELECT COUNT(PaymentTypeID)
 
 --7. Select the Payment Type Description(s) that have the highest number of Payments made.
 SELECT PaymentTypeDescription
+    --    , PaymentType.PaymentTypeID
 FROM   Payment 
     INNER JOIN PaymentType 
         ON Payment.PaymentTypeID = PaymentType.PaymentTypeID
-GROUP BY PaymentTypeDescription 
+GROUP BY PaymentTypeDescription
+        --  , PaymentType.PaymentTypeID
 HAVING COUNT(PaymentType.PaymentTypeID) >= ALL (SELECT COUNT(PaymentTypeID)
                                                 FROM Payment 
                                                 GROUP BY PaymentTypeID)
