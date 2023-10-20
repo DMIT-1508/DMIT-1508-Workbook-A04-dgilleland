@@ -105,6 +105,20 @@ This document demonstrates the string and date functions available in SQL. The l
 
 This document demonstrates using subqueries in SQL.
 
+| Example | Screenshot |
+| ------- | ---------- |
+| Q1)     | ![](./Images/H-01-A.png) |
+|         | ![](./Images/H-01-B.png) |
+| Q3)     | ![](./Images/H-03-A.png) |
+|         | ![](./Images/H-03-B.png) |
+|         | ![](./Images/H-03-C.png) |
+|         | ![](./Images/H-03-D.png) |
+| Q5)     | ![](./Images/H-05-A.png) |
+| Q6)     | ![](./Images/H-06-A.png) |
+|         | ![](./Images/H-06-B.png) |
+|         | ![](./Images/H-06-C.png) |
+
+
 ----
 
 ## [`I - Views.sql`](./I%20-%20Views.sql)
@@ -114,6 +128,8 @@ This document demonstrates how we can use frequently used queries as permanent v
 - As a permanent part of our database, the SQL query underlying the view is managed by the database in a way that optimizes its performance.
 - Views act as "pseudo-tables" and can become the subject of `FROM` clauses in other queries.
 - Views are ideal for situations where we want a **"de-normalized"** perspective on the data in our database.
+
+![](./Images/I-01-A.png)
 
 Views allow access to the underlying tables in our database for more than just queries, however. Views can also be the avenue for inserts/updates/deletes, though there will be some limitations and restrictions depending on the structure and complexity of the SQL query that represents the view.
 
