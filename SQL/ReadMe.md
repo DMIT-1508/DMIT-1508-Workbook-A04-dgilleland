@@ -111,8 +111,9 @@ This document demonstrates using subqueries in SQL.
 
 This document demonstrates how we can use frequently used queries as permanent views. A "View" in SQL is simply a query that is stored on the database. It gives us the following benefits:
 
-- As a permanent part of our database, the SQL query underlying the view is managed by the database in a way that optimizes its performance
+- As a permanent part of our database, the SQL query underlying the view is managed by the database in a way that optimizes its performance.
 - Views act as "pseudo-tables" and can become the subject of `FROM` clauses in other queries.
+- Views are ideal for situations where we want a **"de-normalized"** perspective on the data in our database.
 
 Views allow access to the underlying tables in our database for more than just queries, however. Views can also be the avenue for inserts/updates/deletes, though there will be some limitations and restrictions depending on the structure and complexity of the SQL query that represents the view.
 
