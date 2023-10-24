@@ -1,7 +1,8 @@
 -- Insert Examples
 USE [A04-2023-School]
 GO -- Execute the code up to this point as a single batch
-
+SELECT DB_NAME() AS 'Active Database'
+GO
 /*  Notes:
     The syntax for the INSERT statement is
 
@@ -56,6 +57,11 @@ FROM    Position
 WHERE   PositionID NOT IN (SELECT PositionID FROM Staff)
 --      Add Sheldon Murray as the new Assistant Dean.
 -- TODO: Student Answer Here....
+INSERT INTO Staff(LastName, DateHired, FirstName, PositionID)
+VALUES ('Murray', GETDATE(), 'Sheldon', 
+        (SELECT PositionID
+        FROM   Position
+        WHERE  PositionDescription = 'Assistant Dean'))
 
 -- 3. There are three additional clubs being started at the school:
 --      - START - Small Tech And Research Teams

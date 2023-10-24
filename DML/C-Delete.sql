@@ -1,7 +1,15 @@
 -- Delete Examples
 USE [A04-2023-School]
 GO -- Execute the code up to this point as a single batch
+SELECT DB_NAME() AS 'Active Database'
+GO
+/*  Notes:
+    The syntax for the DELETE statement is
 
+    DELETE FROM TableName
+    WHERE  ConditionalExpression
+
+*/
 -- Delete examples
 -- 1. A scandal has rocked the CSS club. The president has run off with all the
 --    club's money. As such, the club is disbanded. Remove all the members of the
