@@ -86,3 +86,8 @@ There is a [Wininstall package](https://winstall.app/packs/6UXIuqRuh) for this c
 Other recommended resources include:
 
 - [Learn Markdown](https://commonmark.org/help/)
+
+## Cool Stuff
+
+- Want a short way to get a `git log` result that looks cool? See [this article](https://coderwall.com/p/euwpig/a-better-git-log)
+
