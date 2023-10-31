@@ -3,14 +3,16 @@
 
 USE [A04-2023-School]
 GO
+SELECT DB_NAME() AS 'Active Database'
+GO
 
 /* *******************************************
   Each Stored Procedure has to be the first statement in a batch,
     so place a GO statement in-between each question to execute 
     the previous batch (question) and start another.
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'SprocName')
-    DROP PROCEDURE SprocName
+GO
+DROP PROCEDURE IF EXISTS SprocName
 GO
 CREATE PROCEDURE SprocName
     -- Parameters here
@@ -24,14 +26,13 @@ GO
  * Introduction */
 
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'GetName')
-    DROP PROCEDURE GetName
+DROP PROCEDURE IF EXISTS GetName
 GO
 CREATE PROCEDURE GetName
     -- Parameters here
 AS
     -- Body of procedure here
-    SELECT  'Dan', 'Gilleland'
+    SELECT  'Dan' AS 'FirstName', 'Gilleland' AS 'LastName'
     -- How would you change the line above to put column names on the result set?
 RETURN
 GO
@@ -53,8 +54,8 @@ PRINT @Cost
 --  It represents a single block of code, that is, a single set of instructions.
 --  These are helpful especially with the IF/ELSE flow-control statements.
 --  Consider the following example.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'GuessRows')
-    DROP PROCEDURE GuessRows
+GO
+DROP PROCEDURE IF EXISTS GuessRows
 GO
 -- 
 CREATE PROCEDURE GuessRows
@@ -63,11 +64,13 @@ CREATE PROCEDURE GuessRows
 AS
     DECLARE @actual int
     SELECT @actual = COUNT(ClubId) FROM Club
-    IF @actual <> @clubRows
+    IF NOT(@actual = @clubRows)
     BEGIN
         RAISERROR('Wrong guess. Club has a different number of rows', 16, 1)
         IF @clubRows > @actual
             RAISERROR('Too high a guess', 16, 1)
+            --        \                /  |   |_ Severity
+            --         \ Message      /   |_ Error Code
         ELSE
             RAISERROR('Too low a guess', 16, 1)
     END
@@ -78,15 +81,15 @@ AS
     END
 RETURN
 GO
-EXEC GuessRows 5 -- Call the GuessRows procedure that's in the database.
+EXEC GuessRows 8 -- Call the GuessRows procedure that's in the database.
 
 
 /*******************
  * Sample Problems */
 
 --1. Create a stored procedure called "HonorCourses" to select all the course names that have averages > 80%.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'HonorCourses')
-    DROP PROCEDURE HonorCourses
+GO
+DROP PROCEDURE IF EXISTS HonorCourses
 GO
 CREATE PROCEDURE HonorCourses
     -- Parameters here
@@ -104,8 +107,8 @@ EXEC HonorCourses
 
 
 --2. Create a stored procedure called "HonorCoursesOneTerm" to select all the course names that have average > 80% in semester 2004J.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'HonorCoursesOneTerm')
-    DROP PROCEDURE HonorCoursesOneTerm
+GO
+DROP PROCEDURE IF EXISTS HonorCoursesOneTerm
 GO
 CREATE PROCEDURE HonorCoursesOneTerm
 AS
@@ -149,8 +152,8 @@ EXEC HonorCoursesOneTerm '2004S'
 EXEC HonorCoursesOneTerm '2004J'
 
 --4.  Create a stored procedure called CourseCalendar that lists the course ID, name, and cost of all available courses.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'CourseCalendar')
-    DROP PROCEDURE CourseCalendar
+GO
+DROP PROCEDURE IF EXISTS CourseCalendar
 GO
 CREATE PROCEDURE CourseCalendar
     -- Parameters here
@@ -165,8 +168,8 @@ GO
 EXEC CourseCalendar
 
 --4.B. Create a stored procedure called "NotInCourse" that lists the full names of the students that are not in a particular course. The stored procedure should expect the course number as a parameter. e.g.: DMIT221.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'NotInCourse')
-    DROP PROCEDURE NotInCourse
+GO
+DROP PROCEDURE IF EXISTS NotInCourse
 GO
 CREATE PROCEDURE NotInCourse
     -- Parameters here
@@ -184,8 +187,8 @@ EXEC NotInCourse 'DMIT221'
 
 
 --5. Create a stored procedure called "LowNumbers" to select the course name of the course(s) that have had the lowest number of students in it.
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'LowNumbers')
-    DROP PROCEDURE LowNumbers
+GO
+DROP PROCEDURE IF EXISTS LowNumbers
 GO
 CREATE PROCEDURE LowNumbers
     -- Parameters here

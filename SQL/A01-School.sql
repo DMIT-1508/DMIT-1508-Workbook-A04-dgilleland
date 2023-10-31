@@ -11,7 +11,7 @@ GO
 
 USE [A04-2023-School]
 GO
-SELECT DB_NAME()
+SELECT DB_NAME() AS 'Active Database'
 GO
 
 DROP TABLE IF EXISTS Payment
