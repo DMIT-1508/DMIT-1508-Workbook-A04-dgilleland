@@ -25,8 +25,8 @@ GO
 
 
 -- 1. Create a stored procedure called AddClub that will add a new club to the database. (No validation is required).
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'AddClub')
-    DROP PROCEDURE AddClub
+GO
+DROP PROCEDURE IF EXISTS AddClub
 GO
 -- sp_help Club -- Running the sp_help stored procedure will give you information about a table, sproc, etc.
 CREATE PROCEDURE AddClub
@@ -72,10 +72,7 @@ GO
 
 -- 2. Make a stored procedure that will find a club based on the first two or more characters of the club's ID. Call the procedure "FindStudentClubs"
 -- The following stored procedure does the query, but without validation
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'FindStudentClubs')
-    DROP PROCEDURE FindStudentClubs
-GO
-CREATE PROCEDURE FindStudentClubs
+CREATE OR ALTER PROCEDURE FindStudentClubs
     @PartialID      varchar(10)
 AS
     -- Body of procedure here
@@ -131,8 +128,8 @@ EXEC FindStudentClubs 'NA'  -- Should give good results with no errors.
 -- 3. Create a stored procedure that will change the mailing address for a student. Call it ChangeMailingAddress.
 --    Make sure all the parameter values are supplied before running the UPDATE (ie: no NULLs).
 -- sp_help Student
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'ChangeMailingAddress')
-    DROP PROCEDURE ChangeMailingAddress
+GO
+DROP PROCEDURE IF EXISTS ChangeMailingAddress
 GO
 CREATE PROCEDURE ChangeMailingAddress
     -- Parameters here
@@ -180,6 +177,7 @@ AS
         WHERE   StudentID = @StudentId
 RETURN
 GO
+EXEC CorrectStudentName 50045, 'Guido', 'Drozdowski'
 
 -- 5. Create a stored procedure that will remove a student from a club. Call it RemoveFromClub.
 -- TODO: Student Answer Here
