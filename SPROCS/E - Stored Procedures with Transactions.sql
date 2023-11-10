@@ -25,10 +25,19 @@ GO
 /* Key Points on Transactions:
 
     1) When are Transactions necessary in Stored Procedures?
+        Whenever you have 2 or more of any INSERT, UPDATE and/or DELETE statements.
     2) What are the 3 key parts of Transactions in SQL?
+        Transactions are set up by the programmer
+        - BEGIN TRANSACTION - Sets up the database server so that it can revert any changes that are made
+        - ROLLBACK TRANSACTION - Revert all the changes since the transaction began
+        - COMMIT TRANSACTION - Finalize the the changes, making them permanent
     3) How many times should a BEGIN TRANSACTION statement appear in a stored procedure?
+        It should only appear once.
     4) How many times should a ROLLBACK TRANSACTION statement appear in a stored procedure?
+        It should appear for every INSERT, UPDATE and/or DELETE that exists in your code after the transaction has begun.
+        Each of those INSERT, UPDATE and DELETE statements could potentially fail. If they do fail, you should perform a ROLLBACK.
     5) How many times should a COMMIT TRANSACTION statement appear in a stored procedure?
+        It should only appear once. It should be the final possible path in your SPROC that represents success.
 */
 
 -- 1. Add a stored procedure called TransferCourse that accepts a student ID, semester, and two course IDs: the one to move the student out of and the one to move the student in to.
@@ -60,6 +69,10 @@ AS
           AND  Semester = @Semester       -- and the correct semester
           AND  (WithdrawYN = 'N' OR WithdrawYN IS NULL) -- and they are not already withdrawn
         --         Check for error/rowcount
+        -- @@ERROR will hold the Error Code from the previous (most recent) INSERT, UPDATE or DELETE.
+        -- @@ERROR will have a value of zero if the INSERT, UPDATE or DELETE was successful
+        -- @@ERROR should ALWAYS be checked immediately after the INSERT, UPDATE or DELETE
+        -- I decided to also check @@ROWCOUNT because I expect that there should be one row changed
         IF @@ERROR <> 0 OR @@ROWCOUNT = 0
         BEGIN
             --PRINT('RAISERROR + ROLLBACK')
@@ -122,7 +135,7 @@ AS
            SET Mark = 100            -- the max mark possible
         WHERE  CourseId = @CourseID
           AND  Mark * 1.1 > 100      -- whereever adding 10% would give more than 100% of a final mark
-        IF @@ERROR > 0 -- Errors only - it's ok to have zero rows affected
+        IF @@ERROR <> 0 -- check for Errors only; it's ok to have zero rows affected
         BEGIN
             PRINT('RAISERROR + ROLLBACK')
             RAISERROR('Problem updating marks', 16, 1)
@@ -133,7 +146,7 @@ AS
             -- Step 2) Raise all the other marks
             PRINT('Step 2 - Update Registration...')
             UPDATE Registration
-               SET Mark = Mark * 1.1
+               SET Mark = Mark * 1.1 -- a 10% increase
             WHERE  CourseId = @CourseID
               AND  Mark * 1.1 <= 100
 
@@ -178,7 +191,7 @@ AS
         SELECT @CurrentCount = COUNT (StudentID) FROM Registration WHERE CourseId = @CourseID AND Semester = @Semester
         SELECT @CourseCost = CourseCost FROM Course WHERE CourseId = @CourseID
 
-        IF @MaxStudents >= @currentcount 
+        IF @MaxStudents >= @currentcount -- This is the "range" of unacceptable values
         BEGIN
             RAISERROR('The course is already full', 16, 1)
         END
@@ -416,7 +429,7 @@ AS
 RETURN
 GO
 
--- 8. Create a stored procedure called ArchiveStudentGrades that will accept a year and will archive all grade records from that year from the grade table to an ArchiveGrade table. Copy all the appropriate records from the grade table to the ArchiveGrade table and delete them from the grade table. The ArchiveGrade table will have the same definition as the grade table but will not have any constraints.
+-- 8. Create a stored procedure called ArchiveStudentGrades that will accept a year and will archive all grade records from that year from the registration table to an ArchiveGrade table. Copy all the appropriate records from the grade table to the ArchiveGrade table and delete them from the grade table. The ArchiveGrade table will have the same definition as the grade table but will not have any constraints.
 DROP TABLE IF EXISTS ArchiveGrade
 
 CREATE TABLE ArchiveGrade
@@ -467,6 +480,12 @@ AS
         END
     END
 RETURN
+GO
+
+-- I should test my stored procedures to see if they work
+EXEC ArchiveStudentGrades '2000'
+EXEC ArchiveStudentGrades '2001'
+EXEC ArchiveStudentGrades '2002'
 GO
 
 -- 9. Create a stored procedure called ArchivePayments. This stored procedure must transfer all payment records to the StudentPaymentArchive table. After archiving, delete the payment records.
