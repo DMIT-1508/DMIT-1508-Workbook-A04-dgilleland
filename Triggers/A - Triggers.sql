@@ -1,10 +1,10 @@
 -- Triggers Samples
 USE [A04-2023-School]
 GO
-
+SELECT DB_NAME() AS 'Active Database'
+GO
 /*
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Table_TriggerType]'))
-    DROP TRIGGER Table_TriggerType
+DROP TRIGGER IF EXISTS Table_TriggerType
 GO
 
 CREATE TRIGGER Table_TriggerType
@@ -16,15 +16,14 @@ RETURN
 GO
 */
 -- Making a diagnostic trigger for the first example
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Activity_DML_Diagnostic]'))
-    DROP TRIGGER Activity_DML_Diagnostic
+DROP TRIGGER IF EXISTS Activity_DML_Diagnostic
 GO
 
 CREATE TRIGGER Activity_DML_Diagnostic
 ON Activity -- Part of the Activity table
 FOR Insert, Update, Delete -- Show diagnostics of the Activity/inserted/deleted tables
 AS
-    -- Body of Trigger
+    -- Body of Trigger - Echo back the trigger context
     SELECT 'Activity Table:', StudentID, ClubId FROM Activity ORDER BY StudentID
     SELECT 'Inserted Table:', StudentID, ClubId FROM inserted ORDER BY StudentID
     SELECT 'Deleted Table:', StudentID, ClubId FROM deleted ORDER BY StudentID
@@ -40,8 +39,7 @@ UPDATE Activity SET ClubId = 'NASA1' WHERE StudentID = 200494476
 DELETE FROM Activity WHERE StudentID = 200494476
 
 -- 1. In order to be fair to all students, a student can only belong to a maximum of 3 clubs. Create a trigger to enforce this rule.
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Activity_InsertUpdate]'))
-    DROP TRIGGER Activity_InsertUpdate
+DROP TRIGGER IF EXISTS Activity_InsertUpdate
 GO
 
 CREATE TRIGGER Activity_InsertUpdate
@@ -81,6 +79,7 @@ SELECT StudentID, FirstName, LastName FROM Student WHERE StudentID = 200495500 -
 -- The following test should result in a rollback.
 INSERT INTO Activity(StudentID, ClubId)
 VALUES (200495500, 'CIPS') -- Robert Smith
+-- SELECT * FROM Activity
 
 -- The following should succeed
 INSERT INTO Activity(StudentID, ClubId)
@@ -97,8 +96,7 @@ VALUES (200122100, 'CIPS'), -- Peter Codd   -- New to the Activity table
 -- 2. The Education Board is concerned with rising course costs! Create a trigger to ensure that a course cost does not get increased by more than 20% at any one time.
 -- Our first question is, What table should the trigger belong to?
 -- Our next question is, What DML statement(s) should launch the trigger?
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Course_Update_CourseCostLimit]'))
-    DROP TRIGGER Course_Update_CourseCostLimit
+DROP TRIGGER IF EXISTS Course_Update_CourseCostLimit
 GO
 
 CREATE TRIGGER Course_Update_CourseCostLimit
@@ -126,8 +124,7 @@ UPDATE Course SET CourseCost = CourseCost * 1.195
 -- 3. Too many students owe us money and keep registering for more courses! Create a trigger to ensure that a student cannot register for any more courses if they have a balance owing of more than $5000.
 -- Q) What table should the trigger belong to?
 -- Q) What DML statement(s) should launch the trigger?
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Registration_Insert_BalanceOwing]'))
-    DROP TRIGGER Registration_Insert_BalanceOwing
+DROP TRIGGER IF EXISTS Registration_Insert_BalanceOwing
 GO
 
 CREATE TRIGGER Registration_Insert_BalanceOwing
@@ -142,7 +139,7 @@ AS
        -- Our complex business logic involves a table OTHER THAN Registration
        -- We are effectively joining our inserted (Registration) table
        -- with the Student table to see the balance for the new students
-       EXISTS(SELECT S.StudentID FROM inserted AS I
+       EXISTS(SELECT S.StudentID FROM inserted AS I -- inserted for Registration
               INNER JOIN Student AS S ON I.StudentID = S.StudentID
               WHERE S.BalanceOwing > 5000)
     BEGIN
@@ -168,8 +165,7 @@ GO
 -- TODO: Student Answer Here...
 
 -- 4. The Activity table uses a composite primary key. In order to ensure that parts of this key cannot be changed, write a trigger called Activity_PreventUpdate that will prevent changes to the primary key columns.
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Activity_PreventUpdate]'))
-    DROP TRIGGER Activity_PreventUpdate
+DROP TRIGGER IF EXISTS Activity_PreventUpdate
 GO
 
 CREATE TRIGGER Activity_PreventUpdate
@@ -182,7 +178,7 @@ AS
                       -- then I could isolate my IF check by adding the following:
                       --   AND (Update(StudentID) OR Update(ClubId))
     BEGIN
-        RAISERROR('Modifications to the composite primary key of Registration are not allowed', 16, 1)
+        RAISERROR('Modifications to the composite primary key of Activity are not allowed', 16, 1)
         ROLLBACK TRANSACTION
     END
 RETURN
@@ -197,8 +193,8 @@ GO
 ALTER TABLE Registration NOCHECK CONSTRAINT FK_GRD_CRS_CseID
 ALTER TABLE Registration NOCHECK CONSTRAINT FK_GRD_STF_StaID
 ALTER TABLE Registration NOCHECK CONSTRAINT FK_GRD_STU_StuID
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Registration_InsertUpdate_EnforceForeignKeyValues]'))
-    DROP TRIGGER Registration_InsertUpdate_EnforceForeignKeyValues
+GO
+DROP TRIGGER IF EXISTS Registration_InsertUpdate_EnforceForeignKeyValues
 GO
 
 CREATE TRIGGER Registration_InsertUpdate_EnforceForeignKeyValues
@@ -247,8 +243,7 @@ GO
 
 -- 7. Our network security officer suspects our system has a virus that is allowing students to alter their balance owing records! In order to track down what is happening we want to create a logging table that will log any changes to the balance owing in the Student table. You must create the logging table and the trigger to populate it when the balance owing is modified.
 -- Step 1) Make the logging table
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'BalanceOwingLog')
-    DROP TABLE BalanceOwingLog
+DROP TABLE IF EXISTS BalanceOwingLog
 GO
 CREATE TABLE BalanceOwingLog
 (
@@ -260,8 +255,7 @@ CREATE TABLE BalanceOwingLog
 )
 GO
 
-IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[dbo].[Student_Update_AuditBalanceOwing]'))
-    DROP TRIGGER Student_Update_AuditBalanceOwing
+DROP TRIGGER IF EXISTS Student_Update_AuditBalanceOwing
 GO
 
 CREATE TRIGGER Student_Update_AuditBalanceOwing
@@ -270,14 +264,16 @@ FOR UPDATE -- Inserting does not CHANGE, it CREATES data; Deleting does not CHAN
 AS
     -- Body of Trigger
     IF @@ROWCOUNT > 0 AND UPDATE(BalanceOwing)
-    BEGIN
-        INSERT INTO BalanceOwingLog (StudentID, ChangedateTime, OldBalance, NewBalance)
-        SELECT I.StudentID, GETDATE(), d.BalanceOwing, i.BalanceOwing
+    --                    \ Function         /
+    --                     \  Returns true if that column's data changed
+	BEGIN
+	    INSERT INTO BalanceOwingLog (StudentID, ChangedateTime, OldBalance, NewBalance)
+	    SELECT I.StudentID, GETDATE(), d.BalanceOwing, i.BalanceOwing
         FROM deleted AS d 
             INNER JOIN inserted AS i on d.StudentID = i.StudentID
-        IF @@ERROR <> 0 
-        BEGIN
-            RAISERROR('Insert into BalanceOwingLog Failed',16,1)
+	    IF @@ERROR <> 0 
+	    BEGIN
+		    RAISERROR('Insert into BalanceOwingLog Failed',16,1)
             ROLLBACK TRANSACTION
         END    
     END
