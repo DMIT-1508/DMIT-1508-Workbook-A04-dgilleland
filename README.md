@@ -36,7 +36,7 @@ gantt
     section Quizzes
     Quiz 1, Oct 17 :milestone, 2023-10-17, 0d
     Quiz 2, Nov 07 :milestone, 2023-11-07, 0d
-    Quiz 3, Dec 04 :milestone, 2023-12-04, 0d
+    Quiz 3, Dec 05 :milestone, 2023-12-05, 0d
     Quiz 4, Dec 13 :milestone, 2023-12-13, 0d
 ```
 
